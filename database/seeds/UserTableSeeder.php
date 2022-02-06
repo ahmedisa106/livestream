@@ -11,10 +11,14 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i <= 2; $i++) {
+        $names = ['Ahmed','Admin','Ali'];
+
+
+
+        for ($i = 0; $i < count($names); $i++) {
             \App\User::create([
-                'name' => 'user' . $i,
-                'email' => 'user' . $i . '@app.com',
+                'name' => $names[$i],
+                'email' => $names[$i]. '@app.com',
                 'password' => bcrypt('admin')
             ]);
         }

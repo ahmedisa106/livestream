@@ -56,14 +56,20 @@ class SessionController extends Controller
 
     public function store(SessionRequest $request)
     {
-        $session = $this->openTok->createSession();
-        $session_id = $session->getSessionId();
-        $data = $request->validated();
-        $data['session_id'] = $session_id;
-        $data['publisher_id'] = auth()->user()->id;
-        Session::create($data);
-        session()->flash('success', 'session has been created successfully');
-        return redirect()->back();
+        try {
+            $session = $this->openTok->createSession();
+            $session_id = $session->getSessionId();
+            $data = $request->validated();
+            $data['session_id'] = $session_id;
+            $data['publisher_id'] = auth()->user()->id;
+            Session::create($data);
+            session()->flash('success', 'session has been created successfully');
+            return redirect()->back();
+        }catch (\Exception $e){
+            session()->flash('error',$e->getMessage());
+            return  redirect()->back();
+        }
+
 
 
     } //end of store function

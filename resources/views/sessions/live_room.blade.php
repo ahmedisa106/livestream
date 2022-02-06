@@ -161,14 +161,13 @@
             session.on("connectionCreated", function (event) {
                 if (session.capabilities.publish) {
                     toastr['success'](JSON.parse(event.connection.data).name+' Joined live')
-
-
-
                 }
                 connectionCount++;
                 displayConnectionCount();
             });
             session.on("connectionDestroyed", function (event) {
+
+                toastr['error'](JSON.parse(event.connection.data).name+' has left')
                 connectionCount--;
                 displayConnectionCount();
             });
@@ -178,6 +177,8 @@
                 $('#session_members').html(connectionCount.toString())
 
             }
+
+
         }
 
         function sendMessage(session) {
@@ -229,9 +230,12 @@
         }
 
         function disconnect(session) {
+            //console.log(session)
+
+           // toastr['success']('successsss','success')
             session.disconnect()
 
-            window.location.href = '{!! url('/sessions') !!}'
+        //    window.location.href = '{!! url('/sessions') !!}'
         }
 
     </script>
