@@ -19,7 +19,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('sessions/data','SessionController@data')->name('sessions.data');
-Route::post('join-session/{session_id}','SessionController@joinSession')->name('joinSession');
-Route::resource('sessions','SessionController');
+Route::group(['middleware'=>'auth'],function (){
+    Route::get('sessions/data','SessionController@data')->name('sessions.data');
+    Route::post('join-session/{session_id}','SessionController@joinSession')->name('joinSession');
+    Route::resource('sessions','SessionController');
+
+    Route::post('user-logout','HomeController@logout')->name('user.logout');
+});
+
 Route::get('/home', 'HomeController@index')->name('home');

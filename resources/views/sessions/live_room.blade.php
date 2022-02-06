@@ -32,9 +32,14 @@
 </style>
 
 @section('content')
-    Session Members : <b><span id="session_members"></span></b>
 
-    <a href="#" id="disconnect" class="btn btn-sm btn-success">leave Session</a>
+    <div id="alert_user_join" class="alert d-none alert-success text-center ">
+    </div>
+
+    <div class="pull-left">
+        Session Members count : <b><span id="session_members"></span></b>
+    </div>
+
 
     <div id="videos" class="pull-left">
         <div id="subscriber"></div>
@@ -48,8 +53,9 @@
                     <div class="row">
 
                         <div class="col-md-12 col-lg-12">
-
                             <div class="scrollbar max-h-600">
+                                <a href="#" id="disconnect" class="btn btn-sm btn-danger">leave Session</a>
+
                                 <div class="chats">
                                     <div class="chat-wrapper chat_box clearfix">
                                         {{--                                        <div class="chat-avatar">--}}
@@ -117,6 +123,7 @@
             })
             // Subscribe to a newly created stream
             session.on('streamCreated', function (event) {
+
                 session.subscribe(event.stream, 'subscriber', {
                     insertMode: 'append',
                     width: '100%',
@@ -130,14 +137,14 @@
 
             // Connect to the session
             session.connect(token, function (error) {
+
                 // If the connection is successful, initialize a publisher and publish to the session
+
+
                 if (error) {
                     handleError(error);
                 } else {
-
-
                     if (session.capabilities.publish) {
-
                         // Create a publisher
                         var publisher = OT.initPublisher('publisher', {
                             insertMode: 'append',
@@ -152,6 +159,12 @@
 
             var connectionCount = 0;
             session.on("connectionCreated", function (event) {
+                if (session.capabilities.publish) {
+                    toastr['success'](JSON.parse(event.connection.data).name+' Joined live')
+
+
+
+                }
                 connectionCount++;
                 displayConnectionCount();
             });

@@ -17,4 +17,11 @@ class Session extends Model
 
     } //end of getStartAtAttribute function
 
+    public function user ()
+    {
+        return $this->belongsTo(User::class,'publisher_id','id');
+
+
+    } //end of user function
+
 }

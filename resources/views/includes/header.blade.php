@@ -46,14 +46,21 @@
             <div class="dropdown-menu dropdown-menu-right dropdown-big dropdown-notifications">
                 <div class="dropdown-header notifications">
                     <strong>Notifications</strong>
-                    <span class="badge badge-pill badge-warning">05</span>
+                    <span class="badge badge-pill badge-warning">{{auth()->user()->unreadNotifications->count()}}</span>
                 </div>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">New registered user <small class="float-right text-muted time">Just now</small> </a>
-                <a href="#" class="dropdown-item">New invoice received <small class="float-right text-muted time">22 mins</small> </a>
-                <a href="#" class="dropdown-item">Server error report<small class="float-right text-muted time">7 hrs</small> </a>
-                <a href="#" class="dropdown-item">Database report<small class="float-right text-muted time">1 days</small> </a>
-                <a href="#" class="dropdown-item">Order confirmation<small class="float-right text-muted time">2 days</small> </a>
+
+
+                @foreach(auth()->user()->unreadNotifications->take(5) as $notification)
+                    <form action="{{url($notification->data['room_url'])}}" method="post">
+                        @csrf
+                        <input type="hidden" name="notification_id" value="{{$notification->id}}">
+                        <a href="#" onclick="$(this).parent('form').submit()" class="dropdown-item">{{$notification->data['message']}} <small class="float-right text-muted time">{{\Carbon\Carbon::create($notification->created_at)->diffForHumans()}}</small> </a>
+
+                    </form>
+
+                @endforeach
+
             </div>
         </li>
         <li class="nav-item dropdown ">
@@ -81,8 +88,8 @@
                 <div class="dropdown-header">
                     <div class="media">
                         <div class="media-body">
-                            <h5 class="mt-0 mb-0">Michael Bean</h5>
-                            <span>michael-bean@mail.com</span>
+                            <h5 class="mt-0 mb-0">{{auth()->user()->name}}</h5>
+                            <span>{{auth()->user()->email}}</span>
                         </div>
                     </div>
                 </div>
@@ -93,7 +100,12 @@
                 <a class="dropdown-item" href="#"><i class="text-dark ti-layers-alt"></i>Projects <span class="badge badge-info">6</span> </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a>
-                <a class="dropdown-item" href="#"><i class="text-danger ti-unlock"></i>Logout</a>
+
+                <form id="logoutForm" action="{{route('user.logout')}}" method="post">
+                    @csrf
+                    <a class="dropdown-item" href="#" onclick="$('#logoutForm').submit()"><i class="text-danger ti-unlock"></i>Logout</a>
+
+                </form>
             </div>
         </li>
     </ul>
