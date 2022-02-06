@@ -52,12 +52,12 @@
                             <div class="scrollbar max-h-600">
                                 <div class="chats">
                                     <div class="chat-wrapper chat_box clearfix">
-{{--                                        <div class="chat-avatar">--}}
-{{--                                            <b>Ahemd</b>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="chat-body bg-light p-3">--}}
-{{--                                            <p>They have no clarity. When asked the question, responses will be superficial at best, and at worst.</p>--}}
-{{--                                        </div>--}}
+                                        {{--                                        <div class="chat-avatar">--}}
+                                        {{--                                            <b>Ahemd</b>--}}
+                                        {{--                                        </div>--}}
+                                        {{--                                        <div class="chat-body bg-light p-3">--}}
+                                        {{--                                            <p>They have no clarity. When asked the question, responses will be superficial at best, and at worst.</p>--}}
+                                        {{--                                        </div>--}}
                                     </div>
 
 
@@ -72,7 +72,7 @@
                                         <textarea class="form-control input-message scrollbar" placeholder="Type here...*" rows="2" name="message"></textarea>
                                     </div>
                                     <div class="chat-button">
-                                        <a  id="sendMessage" href="#"> <i class="ti-clip"></i></a>
+                                        <a id="sendMessage" href="#"> <i class="fa fa-send"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -124,7 +124,7 @@
                 }, handleError);
             });
 
-            $('#disconnect').on('click',function (){
+            $('#disconnect').on('click', function () {
                 disconnect(session)
             })
 
@@ -190,23 +190,35 @@
 
             session.on("signal", function (event) {
 
-                console.log(event)
-                let html =`<br>  <div class="chat-avatar">
-                                            <b>${JSON.parse(event.from.data).name}</b>
-                                        </div>
-                                        <div class="chat-body bg-light p-3">
-                                            <p>${event.data}</p>
-                                        </div>`
+                let _class = '';
+                let html = '';
+                if (event.from.id == session.connection.id) {
+                    _class = 'chat-me';
+                    html = `<br> <div class="chat-wrapper ${_class}  clearfix">
+                    <div class="chat-body p-3">
+                        <p>${event.data}</p>
+                    </div>
+                </div>`;
+                } else {
+                    html = `<br> <div class="chat-avatar">
+                             <b>${JSON.parse(event.from.data).name}</b>
+                               </div>
+                              <div class="chat-body bg-light p-3">
+                               <p>${event.data}</p>
+                             </div>`;
+                }
+
+
                 $('.chat_box').append(html)
                 $('.input-message').val('')
             });
 
         }
 
-        function disconnect(session){
+        function disconnect(session) {
             session.disconnect()
 
-            window.location.href ='{!! url('/sessions') !!}'
+            window.location.href = '{!! url('/sessions') !!}'
         }
 
     </script>
