@@ -27,4 +27,6 @@ Route::group(['middleware'=>'auth'],function (){
     Route::post('user-logout','HomeController@logout')->name('user.logout');
 });
 
+Route::get('auth/github', [\App\Http\Controllers\GitHubController::class, 'gitRedirect']);
+Route::get('auth/github/callback', [\App\Http\Controllers\GitHubController::class, 'gitCallback']);
 Route::get('/home', 'HomeController@index')->name('home');

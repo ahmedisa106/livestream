@@ -160,14 +160,19 @@
             var connectionCount = 0;
             session.on("connectionCreated", function (event) {
                 if (session.capabilities.publish) {
-                    toastr['success'](JSON.parse(event.connection.data).name+' Joined live')
+                    toastr['success'](JSON.parse(event.connection.data).name + ' Joined live')
                 }
                 connectionCount++;
                 displayConnectionCount();
             });
             session.on("connectionDestroyed", function (event) {
 
-                toastr['error'](JSON.parse(event.connection.data).name+' has left')
+
+                if (event.connection.permissions.publish) {
+                    toastr['error'](JSON.parse(event.connection.data).name + ' has left');
+                    disconnect(session)
+                }
+                toastr['error'](JSON.parse(event.connection.data).name + ' has left');
                 connectionCount--;
                 displayConnectionCount();
             });
@@ -230,12 +235,11 @@
         }
 
         function disconnect(session) {
-            //console.log(session)
 
-           // toastr['success']('successsss','success')
+
             session.disconnect()
 
-        //    window.location.href = '{!! url('/sessions') !!}'
+            window.location.href = '{!! url('/sessions') !!}'
         }
 
     </script>

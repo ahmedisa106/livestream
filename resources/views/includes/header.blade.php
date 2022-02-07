@@ -51,11 +51,11 @@
                 <div class="dropdown-divider"></div>
 
 
-                @foreach(auth()->user()->unreadNotifications->take(5) as $notification)
+                @foreach(auth()->user()->notifications->take(5) as $notification)
                     <form action="{{url($notification->data['room_url'])}}" method="post">
                         @csrf
                         <input type="hidden" name="notification_id" value="{{$notification->id}}">
-                        <a href="#" onclick="$(this).parent('form').submit()" class="dropdown-item">{{$notification->data['message']}} <small class="float-right text-muted time">{{\Carbon\Carbon::create($notification->created_at)->diffForHumans()}}</small> </a>
+                        <a href="#" style="background-color:{{$notification->read_at == null?'gray':''}}" onclick="$(this).parent('form').submit()" class="dropdown-item">{{$notification->data['message']}} <small  class="float-right text-muted time">{{\Carbon\Carbon::create($notification->created_at)->diffForHumans()}}</small> </a>
 
                     </form>
 

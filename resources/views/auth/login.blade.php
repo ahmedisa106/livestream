@@ -50,7 +50,12 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="flex items-center justify-content-center mt-4">
+                            <a class="btn" href="{{ url('auth/github') }}"
+                               style="background: #313131; color: #ffffff; padding: 10px; width: 40%; text-align: center; display: block; border-radius:3px;">
+                                Login with GitHub
+                            </a>
+                        </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
