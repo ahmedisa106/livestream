@@ -126,6 +126,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/johnstevenson/json-works" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/opentok/opentok" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/firebase/php-jwt" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/app" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

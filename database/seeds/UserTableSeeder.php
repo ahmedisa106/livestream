@@ -12,9 +12,6 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         $names = ['Ahmed','Admin','Ali'];
-
-
-
         for ($i = 0; $i < count($names); $i++) {
             \App\User::create([
                 'name' => $names[$i],

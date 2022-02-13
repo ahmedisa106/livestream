@@ -137,10 +137,7 @@
 
             // Connect to the session
             session.connect(token, function (error) {
-
                 // If the connection is successful, initialize a publisher and publish to the session
-
-
                 if (error) {
                     handleError(error);
                 } else {
