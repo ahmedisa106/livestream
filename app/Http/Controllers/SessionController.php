@@ -56,6 +56,7 @@ class SessionController extends Controller
 
     public function store(SessionRequest $request)
     {
+
         try {
             $session = $this->openTok->createSession();
             $session_id = $session->getSessionId();
