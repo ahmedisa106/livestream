@@ -10,7 +10,7 @@
     'locale' => 'en',
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
-    'key' => 'base64:ZptECBSXuVquPxvcsqtTHt/CWvFuKDtn3TveX3ssZyo=',
+    'key' => 'base64:uuN0fGR5sKiJJ0bfdzXZWY8CElw0sUsfOlEDV0DDejQ=',
     'cipher' => 'AES-256-CBC',
     'providers' => 
     array (
@@ -42,7 +42,6 @@
       25 => 'App\\Providers\\AuthServiceProvider',
       26 => 'App\\Providers\\EventServiceProvider',
       27 => 'App\\Providers\\RouteServiceProvider',
-      28 => 'Laravel\\Socialite\\SocialiteServiceProvider',
     ),
     'aliases' => 
     array (
@@ -82,7 +81,6 @@
       'URL' => 'Illuminate\\Support\\Facades\\URL',
       'Validator' => 'Illuminate\\Support\\Facades\\Validator',
       'View' => 'Illuminate\\Support\\Facades\\View',
-      0 => 'Laravel\\Socialite\\Facades\\Socialite',
     ),
   ),
   'auth' => 
@@ -180,7 +178,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\wamp64\\www\\test\\livestream\\storage\\framework/cache/data',
+        'path' => 'C:\\wamp64\\www\\livestream\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -394,12 +392,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\wamp64\\www\\test\\livestream\\storage\\app',
+        'root' => 'C:\\wamp64\\www\\livestream\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\wamp64\\www\\test\\livestream\\storage\\app/public',
+        'root' => 'C:\\wamp64\\www\\livestream\\storage\\app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
       ),
@@ -415,7 +413,7 @@
     ),
     'links' => 
     array (
-      'C:\\wamp64\\www\\test\\livestream\\public\\storage' => 'C:\\wamp64\\www\\test\\livestream\\storage\\app/public',
+      'C:\\wamp64\\www\\livestream\\public\\storage' => 'C:\\wamp64\\www\\livestream\\storage\\app/public',
     ),
   ),
   'hashing' => 
@@ -449,13 +447,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'C:\\wamp64\\www\\test\\livestream\\storage\\logs/laravel.log',
+        'path' => 'C:\\wamp64\\www\\livestream\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'C:\\wamp64\\www\\test\\livestream\\storage\\logs/laravel.log',
+        'path' => 'C:\\wamp64\\www\\livestream\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -505,7 +503,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'C:\\wamp64\\www\\test\\livestream\\storage\\logs/laravel.log',
+        'path' => 'C:\\wamp64\\www\\livestream\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -552,14 +550,14 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'C:\\wamp64\\www\\test\\livestream\\resources\\views/vendor/mail',
+        0 => 'C:\\wamp64\\www\\livestream\\resources\\views/vendor/mail',
       ),
     ),
   ),
   'opentok' => 
   array (
-    'api_key' => '47443221',
-    'api_secret' => 'c39410363576ab8fb84e85a0dd0137716ea24c95',
+    'api_key' => '47441501',
+    'api_secret' => '2d6c2e524ec0ee87a81a4d818737467ed2f8b9cb',
   ),
   'queue' => 
   array (
@@ -641,7 +639,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'C:\\wamp64\\www\\test\\livestream\\storage\\framework/sessions',
+    'files' => 'C:\\wamp64\\www\\livestream\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -661,9 +659,9 @@
   array (
     'paths' => 
     array (
-      0 => 'C:\\wamp64\\www\\test\\livestream\\resources\\views',
+      0 => 'C:\\wamp64\\www\\livestream\\resources\\views',
     ),
-    'compiled' => 'C:\\wamp64\\www\\test\\livestream\\storage\\framework\\views',
+    'compiled' => 'C:\\wamp64\\www\\livestream\\storage\\framework\\views',
     'expires' => true,
   ),
   'flare' => 
@@ -811,7 +809,7 @@
     ),
     'temporary_files' => 
     array (
-      'local_path' => 'C:\\wamp64\\www\\test\\livestream\\storage\\framework/cache/laravel-excel',
+      'local_path' => 'C:\\wamp64\\www\\livestream\\storage\\framework/cache/laravel-excel',
       'remote_disk' => NULL,
       'remote_prefix' => NULL,
       'force_resync_remote' => NULL,

@@ -44,7 +44,6 @@
     40 => 'App\\Providers\\AuthServiceProvider',
     41 => 'App\\Providers\\EventServiceProvider',
     42 => 'App\\Providers\\RouteServiceProvider',
-    43 => 'Laravel\\Socialite\\SocialiteServiceProvider',
   ),
   'eager' => 
   array (
