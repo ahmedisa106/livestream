@@ -165,10 +165,13 @@
             });
             session.on("connectionDestroyed", function (event) {
 
-               if(event.connection.permissions.publish){
-                   disconnect(session)
-               }
-                toastr['error'](JSON.parse(event.connection.data).name + ' has left')
+
+
+                if (event.connection.permissions.publish) {
+                    toastr['error'](JSON.parse(event.connection.data).name + ' has left');
+                    disconnect(session)
+                }
+                toastr['error'](JSON.parse(event.connection.data).name + ' has left');
                 connectionCount--;
                 displayConnectionCount();
             });
@@ -231,9 +234,11 @@
         }
 
         function disconnect(session) {
-            //console.log(session)
+
 
             toastr['success']('successsss', 'success')
+
+
             session.disconnect()
 
             window.location.href = '{!! url('/sessions') !!}'
